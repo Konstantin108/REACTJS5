@@ -1,0 +1,20 @@
+.header {
+  background-color: cornflowerblue;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+}
+.header__userData {
+  text-align: center;
+}
+.header__menu {
+  min-width: 50px;
+  display: flex;
+}
+.header__message {
+  padding: 4px;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */
