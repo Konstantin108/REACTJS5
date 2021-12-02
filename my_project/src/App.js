@@ -38,14 +38,12 @@ function App() {
         }
     }, [messageList]);
 
-    const data = {
-        date: new Date(),
-        name: 'Konstantin'
-    }
+    const name = useState('Konstantin');
+
 
     return (
         <BrowserRouter className="App">
-            <Header date={data.date} name={data.name}/>
+            <Header name={name}/>
             <Route exact path={'/'} component={Profile}/>
             <Route path={'/chats'} component={Chats}/>
             <div className={'container'}>

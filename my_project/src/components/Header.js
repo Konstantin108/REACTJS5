@@ -1,10 +1,6 @@
 import React from 'react';
 import {Link, Route} from "react-router-dom";
 
-const formatData = (date) => {
-    return date.toLocaleString();
-};
-
 function UserHello({name}) {
     return (
         <div>Здравствуйте, {name}</div>
@@ -22,11 +18,10 @@ const ShowLink = ({message, children}) => {
     )
 };
 
-export const Header = ({date, name}) => {
+export const Header = ({name}) => {
     return (
         <div className={'header'}>
             <div className={'header__userData'}>
-                <div>{formatData(date)}</div>
                 <UserHello name={name}/>
             </div>
             <div className="header__menu">
