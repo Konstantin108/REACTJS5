@@ -1,10 +1,11 @@
+import '../App.css';
 import React from 'react';
 
 export const Message = ({author, message}) => {
     return (
-        <div>
-            <h1>{author}</h1>
-            <h2>{message}</h2>
+        <div className={'message'}>
+            <div className={'message__name'}>{author}</div>
+            <div className={'message__text'}>{message}</div>
         </div>
     )
 };

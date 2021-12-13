@@ -2,13 +2,13 @@ import '../App.css';
 import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import {Card, Typography} from "@mui/material";
+import {Card} from "@mui/material";
 
 export default function PinnedSubheaderList() {
     return (
         <List
             sx={{
-                width: '100%',
+                width: 400,
                 maxWidth: 360,
                 bgcolor: 'background.paper',
                 position: 'relative',
@@ -18,8 +18,7 @@ export default function PinnedSubheaderList() {
             }}
             subheader={<li/>}
         >
-            <Typography variant="h3" component="h3">Чаты</Typography>
-            {['Кирилл', 'Антон', 'Степан', 'Иван', 'Мария'].map((sectionName) => (
+            {['Кирилл', 'Антон', 'Степан', 'Иван', 'Мария', 'Александр'].map((sectionName) => (
                 <li key={`section-${sectionName}`}>
                     <ul>
                         <ListItem key={`${sectionName}`}>

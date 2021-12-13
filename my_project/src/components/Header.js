@@ -1,9 +1,11 @@
+import '../App.css';
 import React from 'react';
 import {Link, Route} from "react-router-dom";
+import {connect} from "react-redux";
 
-function UserHello({name}) {
+function UserHello(props) {
     return (
-        <div>Здравствуйте, {name}</div>
+        <div>Здравствуйте, {props.firstName}</div>
     );
 }
 
@@ -18,18 +20,26 @@ const ShowLink = ({message, children}) => {
     )
 };
 
-export const Header = ({name}) => {
+function Header(props) {
     return (
         <div className={'header'}>
             <div className={'header__userData'}>
-                <UserHello name={name}/>
+                <UserHello firstName={props.firstName}/>
             </div>
             <div className="header__menu">
-                <Route path={'/chats'}
-                       children={() => <ShowLink message={<Link to={'/'}>главная</Link>}/>}/>
+                <Route path={'/profile'}
+                       children={() => <ShowLink message={<Link to={'/'}>чаты</Link>}/>}/>
                 <Route path={'/'}
-                       children={() => <ShowLink message={<Link to={'/chats'}>чаты</Link>}/>}/>
+                       children={() => <ShowLink message={<Link to={'/profile'}>профиль</Link>}/>}/>
             </div>
         </div>
     );
 };
+
+function mapStateToProps(state) {
+    return {
+        firstName: state.firstName
+    }
+}
+
+export default connect(mapStateToProps)(Header);

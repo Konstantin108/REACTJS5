@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap");
 .header {
   background-color: cornflowerblue;
   padding: 20px;
@@ -15,6 +16,76 @@
 .header__message {
   padding: 4px;
   color: white;
+}
+
+.main {
+  display: flex;
+}
+
+.contentBlock {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.message {
+  background-color: #acc0e3;
+  font-family: "Roboto", sans-serif;
+  margin-top: 5px;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.message__name {
+  font-family: "Roboto", sans-serif;
+  text-align: right;
+  padding-right: 4px;
+}
+.message__text {
+  font-family: "Roboto", sans-serif;
+  padding: 4px;
+  width: 700px;
+}
+
+.container__block {
+  display: flex;
+  align-items: flex-end;
+}
+.container__input {
+  margin: 5px;
+}
+.container__btn {
+  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 30px;
+  margin-left: 4px;
+  background-color: #e1e1e1;
+  border: 1px solid #acacac;
+  font-family: "Roboto", sans-serif;
+  font-size: 14.1px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #666666;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.container__btn:hover {
+  font-family: "Roboto", sans-serif;
+  background-color: #f44336;
+  color: white;
+}
+
+.avatar {
+  width: 300px;
+}
+
+.btnOnProfile {
+  cursor: pointer;
+  margin: 6px;
 }
 
 /*# sourceMappingURL=style.css.map */
