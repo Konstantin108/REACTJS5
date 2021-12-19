@@ -37,8 +37,9 @@ function Header(props) {
 };
 
 function mapStateToProps(state) {
+    const {profileReducer} = state;
     return {
-        firstName: state.firstName
+        firstName: profileReducer.firstName
     }
 }
 

@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {TextField, Typography} from "@mui/material";
 import List from "./List";
 import {Message} from "./Message";
+import Comments from "./Comments";
 
 export const Chats = (props) => {
 
@@ -98,6 +99,7 @@ export const Chats = (props) => {
                         </div>
                     </div>
                 </div>
+                <Comments/>
             </div>
         </div>
     )

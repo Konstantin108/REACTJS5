@@ -7,7 +7,6 @@ import Profile from "./components/Profile";
 import {Route} from "react-router";
 import {green} from '@mui/material/colors';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import store from './redux/store';
 
 const theme = createTheme({
     palette: {
@@ -20,13 +19,13 @@ const theme = createTheme({
 function App() {
 
     const WrappedProfile = function (props) {
-        return (<Profile {...props} store={store}/>);
+        return (<Profile {...props}/>);
     };
 
     return (
         <ThemeProvider theme={theme}>
             <BrowserRouter className="App">
-                <Header store={store}/>
+                <Header/>
                 <div className={'contentBlock'}>
                     <Route exact path={'/'} component={Chats}/>
                     <Route path={'/profile'} component={WrappedProfile}/>

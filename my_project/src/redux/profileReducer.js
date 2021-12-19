@@ -1,4 +1,4 @@
-import {createStore} from "redux";
+import {DECREMENT, INCREMENT} from "./types";
 
 const initialState = {
     firstName: 'Sergey',
@@ -6,15 +6,14 @@ const initialState = {
     likes: 0
 }
 
-const reducer = (state = initialState, action) => {
-
+export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'INCREMENT':
+        case INCREMENT:
             return {
                 ...state,
                 likes: state.likes + 1
             }
-        case 'DECREMENT':
+        case DECREMENT:
             return {
                 ...state,
                 likes: state.likes - 1
@@ -24,7 +23,3 @@ const reducer = (state = initialState, action) => {
             return state;
     }
 }
-
-const store = createStore(reducer);
-
-export default store;
