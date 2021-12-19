@@ -1,41 +1,55 @@
-import '../App.css';
-import React, {useEffect, useState} from 'react';
-import {TextField, Typography} from "@mui/material";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import Message from "./Message";
+import uniqid from "uniqid";
+import {messageCreate} from "../redux/actions";
 import List from "./List";
-import {Message} from "./Message";
-import Comments from "./Comments";
+import {TextField, Typography} from "@mui/material";
 
-export const Chats = (props) => {
+function Chats(props) {
 
-    const [messageList, setMessageList] = useState([]);
-    const [author, setAuthor] = useState("");
-    const [message, setMessage] = useState("");
-    const [showMessage, setShowMessage] = useState(false);
+    const [author, setAuthor] = useState('');
+    const [text, setText] = useState('');
+    const messages = useSelector(state => {
+        const {messagesReducer} = state;
+        return messagesReducer.messages;
+    });
+    const dispatch = useDispatch();
+    const handleInput = (e) => {
+        setAuthor(e.target.value);
 
-    function addNewMessage() {
-        setMessageList((prev) => [...prev, {author: author, message: message}]);
-        setAuthor("");
-        setMessage("");
-        setShowMessage(true);
+    }
+    const handleInput2 = (e) => {
+
+        setText(e.target.value);
+    }
+    const handleSubmit = (e) => {
+        if (author && text) {
+            e.preventDefault();
+            const id = uniqid;
+            dispatch(messageCreate(author, text, id));
+            setAuthor('');
+            setText('');
+        } else {
+            e.preventDefault();
+            alert('Оба поля должны быть заполнены!')
+        }
     }
 
     useEffect(() => {
         if (
-            messageList.length >= 1 &&
-            messageList[messageList.length - 1].author !== "Бот помощник"
+            messages.length >= 1 &&
+            messages[messages.length - 1].authorData !== "Бот помощник"
         ) {
-            let name = messageList[messageList.length - 1].author
+            const name = messages[messages.length - 1].authorData
             setTimeout(() => {
-                setMessageList([
-                    ...messageList,
-                    {
-                        author: "Бот помощник",
-                        message: `Здравствуйте, ${name}! Я уже работаю над решением вашего вопроса`
-                    },
-                ]);
+                const author = 'Бот помощник';
+                const text = `Здравствуйте, ${name}! Я уже работаю над решением вашего вопроса`;
+                const id = uniqid;
+                dispatch(messageCreate(author, text, id));
             }, 2000);
         }
-    }, [messageList]);
+    }, [messages]);
 
     return (
         <div>
@@ -44,63 +58,43 @@ export const Chats = (props) => {
                     <Typography variant="h3" component="h3">Чаты</Typography>
                     <List/>
                 </div>
-                <div className={'container'}>
-                    <div className={'card chat-app'}>
-                        <div className={'chat'}>
-                            <div className={'chat-message clearfix'}>
-                                <div className={'container__block'}>
-                                    <div className={'container__input'}>
-                                        <TextField type="text"
-                                                   autoFocus
-                                                   value={author}
-                                                   name="author"
-                                                   style={{width: 200}}
-                                                   placeholder="введите ваше имя"
-                                                   variant="filled"
-                                                   size="small"
-                                                   onChange={(e) => {
-                                                       setAuthor(e.target.value);
-                                                   }}
-                                        />
-                                    </div>
-                                    <div className={'container__input'}>
-                                        <TextField type="text"
-                                                   value={message}
-                                                   name="message"
-                                                   style={{width: 360}}
-                                                   placeholder="введите сообщение"
-                                                   variant="filled"
-                                                   size="small"
-                                                   onChange={(e) => {
-                                                       setMessage(e.target.value);
-                                                   }}
-                                        />
-                                    </div>
-                                    <div className={'input-group-prepend'}>
-                                        <button
-                                            type="submit"
-                                            className={'container__btn'}
-                                            onClick={addNewMessage}
-                                        >
-                                            отправить
-                                        </button>
-                                    </div>
-                                </div>
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <div className={'container__block'}>
+                            <div className={'container__input'}>
+                                <TextField type="text"
+                                           autoFocus
+                                           style={{width: 200}}
+                                           placeholder="введите ваше имя"
+                                           variant="filled"
+                                           size="small"
+                                           value={author}
+                                           onChange={handleInput}
+                                />
                             </div>
-                            <div className={'chat-history'}>
-                                <ul className={'m-b-0'}>
-                                    {showMessage
-                                        ? messageList.map(({message, author}, i) => (
-                                            <Message key={i} message={message} author={author}/>
-                                        ))
-                                        : ""}
-                                </ul>
+                            <div className={'container__input'}>
+                                <TextField type="text"
+                                           autoFocus
+                                           style={{width: 200}}
+                                           placeholder="введите ваше имя"
+                                           variant="filled"
+                                           size="small"
+                                           value={text}
+                                           onChange={handleInput2}
+                                />
                             </div>
+                            <Typography variant="h6" component="h6">Нажми ENTER для отправки сообщения</Typography>
                         </div>
-                    </div>
+                        <input type="submit" hidden/>
+                    </form>
+                    {!!messages.length && messages.map(res => {
+                        return <Message key={res.id} data={res}/>
+                    })}
                 </div>
-                <Comments/>
             </div>
         </div>
+
     )
-};
+}
+
+export default Chats;

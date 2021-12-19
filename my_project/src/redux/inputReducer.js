@@ -12,7 +12,6 @@ export const inputReducer = (state = initialState, action) => {
                 text: action.text
             }
 
-
         default:
             return state;
     }

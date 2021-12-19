@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Header from "./components/Header";
-import {Chats} from "./components/Chats";
+import Chats from "./components/Chats";
 import {BrowserRouter} from "react-router-dom";
 import Profile from "./components/Profile";
 import {Route} from "react-router";
