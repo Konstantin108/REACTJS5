@@ -1,7 +1,7 @@
 import {DECREMENT, INCREMENT} from "./types";
 
 const initialState = {
-    firstName: 'Sergey',
+    firstName: 'Konstantin',
     lastName: 'Petrov',
     likes: 0
 }

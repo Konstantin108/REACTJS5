@@ -4,7 +4,7 @@ function Message({data}) {
 
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
-    const {authorData, textData, id} = data;
+    const {authorData, textData} = data;
 
     useEffect(() => {
         if (authorData && textData) {

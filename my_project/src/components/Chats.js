@@ -26,7 +26,7 @@ function Chats(props) {
     const handleSubmit = (e) => {
         if (author && text) {
             e.preventDefault();
-            const id = uniqid;
+            const id = uniqid();
             dispatch(messageCreate(author, text, id));
             setAuthor('');
             setText('');
@@ -45,11 +45,11 @@ function Chats(props) {
             setTimeout(() => {
                 const author = 'Бот помощник';
                 const text = `Здравствуйте, ${name}! Я уже работаю над решением вашего вопроса`;
-                const id = uniqid;
+                const id = uniqid();
                 dispatch(messageCreate(author, text, id));
             }, 2000);
         }
-    }, [messages]);
+    }, [dispatch, messages]);
 
     return (
         <div>

@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap");
 .header {
   background-color: cornflowerblue;
   padding: 20px;
@@ -22,14 +21,32 @@
   display: flex;
 }
 
+.commentsMain {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  left: 45%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+}
+
 .contentBlock {
   padding-left: 10px;
   padding-right: 10px;
 }
 
+.profile {
+  display: flex;
+}
+.profile__block {
+  margin-right: 60px;
+}
+
 .message {
   background-color: #acc0e3;
-  font-family: "Roboto", sans-serif;
   margin-top: 5px;
   padding: 4px;
   border-radius: 8px;
@@ -38,12 +55,10 @@
   align-items: center;
 }
 .message__name {
-  font-family: "Roboto", sans-serif;
   text-align: right;
   padding-right: 4px;
 }
 .message__text {
-  font-family: "Roboto", sans-serif;
   padding: 4px;
   width: 700px;
 }
@@ -64,7 +79,6 @@
   margin-left: 4px;
   background-color: #e1e1e1;
   border: 1px solid #acacac;
-  font-family: "Roboto", sans-serif;
   font-size: 14.1px;
   line-height: 24px;
   font-weight: 500;
@@ -74,13 +88,16 @@
   cursor: pointer;
 }
 .container__btn:hover {
-  font-family: "Roboto", sans-serif;
   background-color: #f44336;
   color: white;
 }
 
 .avatar {
   width: 300px;
+}
+
+.commentForm {
+  margin-bottom: 10px;
 }
 
 .listContainer {
@@ -94,6 +111,131 @@
 
 .cardInput {
   margin: 6px;
+}
+
+.deck-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.deck {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+.deck:before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  top: -20px;
+  left: 0;
+  border-radius: 16px;
+  background: #337AB7;
+}
+
+.card {
+  position: relative;
+  background-color: #BFE2FF;
+  padding: 10px;
+  z-index: 5;
+  border-radius: 12px;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
+  transition: 200ms ease-in-out;
+  transform: scale(0.95);
+}
+
+.card:hover {
+  z-index: 7;
+  transform: scale(1);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+}
+
+.card:nth-of-type(even) {
+  margin-top: -120px;
+  margin-left: 55px;
+  margin-right: -85px;
+}
+
+.card:nth-of-type(odd) {
+  margin-top: -50px;
+  margin-left: -40px;
+  margin-right: 0;
+}
+
+.card:first-of-type {
+  margin-top: 0;
+  margin-left: -90px;
+  margin-right: 50px;
+}
+
+.cardHeader {
+  font-size: 26px;
+  color: #337AB7;
+  text-transform: uppercase;
+  padding: 8px 10px;
+}
+
+.cardBody {
+  padding: 0 10px;
+}
+
+.cardBody p {
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: Verdana, sans-serif;
+}
+
+.cross {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  z-index: 6;
+  color: white;
+  cursor: pointer;
+}
+
+.widthInput {
+  width: 700px;
+}
+
+.cardFooter {
+  font-family: Verdana, sans-serif;
+  font-size: 16px;
+  text-align: left;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: #337AB7;
+  padding: 0 10px;
+  min-width: 700px;
+}
+
+.card {
+  transform: scale(1);
+}
+
+.card:nth-of-type(even) {
+  margin-left: 40px;
+  margin-right: -40px;
+  margin-top: 20px;
+}
+
+.card:nth-of-type(odd) {
+  margin-left: -40px;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.card:nth-of-type(even),
+.card:nth-of-type(odd) {
+  margin: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
